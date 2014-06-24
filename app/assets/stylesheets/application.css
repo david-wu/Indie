@@ -46,9 +46,11 @@ a {
   border: 1px solid #d4d4d4;
   opacity: 0.8;
 }
-
 .tile:hover {
   opacity: 1;
+}
+.tile-container.col-sm-4 {
+  height: 500px;
 }
 
 #footer{

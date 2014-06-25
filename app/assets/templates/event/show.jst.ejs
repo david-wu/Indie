@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class='col-sm-4'>
+    <div class='col-sm-4 event-show'>
       <div class='tile-raised'>
         $<span id='amount-raised'><%= event.get('funds_raised') %></span>
         <%= event.get('currency') %>USD<br>
@@ -79,10 +79,10 @@
           </div>
         </div>
       </div><br><hr>
-      <div>
-        <img class='product-img' src='<%= event.get('img_src') %>'>
+      <div class="perks-col">
+        <!-- add perks here -->
         <% if(is_owned){ %>
-          <span data-attr='img_src' class="glyphicon glyphicon-pencil"></span>
+          <span class="glyphicon glyphicon-plus add-perk"></span>
         <% } %>
       </div><br>
     </div>

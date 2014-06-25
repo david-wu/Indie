@@ -2,7 +2,11 @@ Indie.Views.EventShow = Backbone.View.extend({
   templateNew: JST['event/show'],
   events: {
     'click .glyphicon-pencil.glyphicon': "editEvent",
-    'click .btn-contribute': 'fundEvent'
+    'click .btn-contribute': 'fundEvent',
+    'click .glyphicon.glyphicon-plus.add-perk': 'newPerk',
+  },
+  newPerk: function(){
+    console.log('new perk')
   },
   initialize: function(options){
     this.event = options.event

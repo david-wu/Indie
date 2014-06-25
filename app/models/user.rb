@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     validates :email, presence: true
     validates :email, uniqueness: true
     before_create :ensure_session_token
+    has_many :events, class_name: "Event", foreign_key: "owner_id"
 
     def ensure_session_token
       self.session_token ||= SecureRandom.urlsafe_base64(16)

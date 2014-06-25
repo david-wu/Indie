@@ -79,6 +79,13 @@
           </div>
         </div>
       </div><br><hr>
+      <div>
+        <img class='product-img' src='<%= event.get('img_src') %>'>
+        <% if(is_owned){ %>
+          <span data-attr='img_src' class="glyphicon glyphicon-pencil"></span>
+        <% } %>
+      </div>
+      <br><hr>
       <div class="perks-col">
         <!-- add perks here -->
         <% if(is_owned){ %>

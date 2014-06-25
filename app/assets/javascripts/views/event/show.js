@@ -30,15 +30,12 @@ Indie.Views.EventShow = Backbone.View.extend({
     var $el = $("span[data-attr="+attr+"]").parent();
 
     // sets length of input box
-    var fieldLength = 8;
+    var rows = 3;
     if(this.event.get(attr)){
-      fieldLength = this.event.get(attr).length+8
+      rows = this.event.get(attr).length/60;
     }
 
-    // debugger
-    // $el.html('<input type="text" name="pin" maxlength="4" size="4">')
-    $el.html('<input id="edit-attr-field" type="text" size="'+fieldLength+'" value="'+this.event.get(attr)+'">')
-    // debugger
+    $el.html('<textarea autofocus id="edit-attr-field" rows="'+rows+'"" type="text">'+this.event.get(attr)+'</textarea>')
     $el.children()[0].select()
     $el.keydown(function(event){
       if(event.keyCode === 13){

@@ -4,9 +4,18 @@ Indie.Views.EventShow = Backbone.View.extend({
     'click .glyphicon-pencil.glyphicon': "editEvent",
     'click .btn-contribute': 'fundEvent',
     'click .glyphicon.glyphicon-plus.add-perk': 'newPerk',
+    'click .btn.btn-success.create-perk': 'createPerk',
   },
-  newPerk: function(){
-    console.log('new perk')
+
+  createPerk: function(event){
+    
+    var perk = new Indie.Models.Perk($(event.target.form).serializeJSON());
+    debugger
+    this.render();
+  },
+  newPerk: function(event){
+    var $el = $('.add-perk-container')
+    $el.html(JST['perk/new']({}))
   },
   initialize: function(options){
     this.event = options.event

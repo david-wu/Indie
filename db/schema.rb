@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140625174553) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.string   "img_src"
   end
 
   create_table "users", force: true do |t|

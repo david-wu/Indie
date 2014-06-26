@@ -1,0 +1,15 @@
+<div class="perk perk-<%=perk.get('id')%>">
+	<h3>$<%= perk.get('cost') %></h3>
+	<img class='perk-img' src='<%= perk.get('img_src') %>'>
+	<h3><%= perk.get('title') %></h3>
+	<%= perk.get('description') %><br>
+	<%= perk.get('available') %> available
+</div>
+<br><br>
+<hr>
+<script>
+	$('.perk.perk-<%=perk.get('id')%>').click(function(){
+		$('button[data-target="#fund-modal"').click();
+		$('.contribution-field').val('<%= perk.get('cost') %>')
+	})
+</script>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :events
     resources :users
+    resources :perks
     post 'users/login', to: 'users#login'
   end
 end

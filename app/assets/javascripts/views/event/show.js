@@ -8,10 +8,16 @@ Indie.Views.EventShow = Backbone.View.extend({
   },
 
   createPerk: function(event){
-    
+    $('.add-perk-container').html('<span class="glyphicon glyphicon-plus add-perk"></span>')
+    var that = this;
     var perk = new Indie.Models.Perk($(event.target.form).serializeJSON());
-    debugger
-    this.render();
+    perk.set('event_id', this.event.get('id'));
+    perk.save([], {
+      success: function(){
+        $('.perks-col').append(JST['perk/show']({perk: perk}));
+        // Indie.router.showEvent(that.event.get('id'));
+      }
+    });
   },
   newPerk: function(event){
     var $el = $('.add-perk-container')
@@ -19,6 +25,7 @@ Indie.Views.EventShow = Backbone.View.extend({
   },
   initialize: function(options){
     this.event = options.event
+    this.perks = options.perks
     this.event.on('change add reset sync', this.render, this);
   },
   fundEvent: function(event){
@@ -58,9 +65,13 @@ Indie.Views.EventShow = Backbone.View.extend({
     console.log(this.event)
   },
   render: function(){
+    console.log('render',this.event)
+
     var renderedContent = this.templateNew({
       event: this.event,
+      perks: this.perks
     });
+
     this.$el.html(renderedContent)
     return this;
   },

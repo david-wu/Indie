@@ -1,7 +1,13 @@
 <% if(parseInt(Cookie.get('user_id')) === event.get('owner_id')){ var is_owned = true } %>
 <div class='container'>
   <div class='row'>
-
+    <div class='col-sm-2'>
+      <img class='product-img' src='<%= event.get('img_src') %>'>
+      <% if(is_owned){ %>
+        <span data-attr='img_src' class="glyphicon glyphicon-pencil"></span>
+      <% } %>
+    </div>
+    <div class='col-sm-10'>
     <h1>
       <%= event.get('title') %>
       <% if(is_owned){ %>
@@ -22,7 +28,7 @@
         <span data-attr='category' class="glyphicon glyphicon-pencil"></span>
       <% } %>
     </div>
-
+    </div>
   </div><br><hr><br>
 
   <div class='row'>
@@ -79,21 +85,19 @@
           </div>
         </div>
       </div><br><hr>
-      <div>
-        <img class='product-img' src='<%= event.get('img_src') %>'>
-        <% if(is_owned){ %>
-          <span data-attr='img_src' class="glyphicon glyphicon-pencil"></span>
-        <% } %>
-      </div>
-      <br><hr>
+
       <div class="perks-col">
         <!-- add perks here -->
-        <% if(is_owned){ %>
-          <div class='add-perk-container'>
-            <span class="glyphicon glyphicon-plus add-perk"></span>
-          </div>
-        <% } %>
-      </div><br>
+        <% perks.each(function(perk){ %>
+          <%= JST['perk/show']({perk: perk}) %>
+        <% }) %>
+
+      </div><br><br>
+      <% if(is_owned){ %>
+        <div class='add-perk-container'>
+          <span class="glyphicon glyphicon-plus add-perk"></span>
+        </div>
+      <% } %>
     </div>
   </div>
 </div>

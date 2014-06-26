@@ -58,19 +58,28 @@ window.Indie.Routers.Main = Backbone.Router.extend({
     newEventView.render();
   },
   showEvent: function(id){
-    if(!this._events.get(id)){
-      this._events.set(new Indie.Models.Event({id:id}));
+    if(this._events.get(id)){
+      var event = this._events.get(id)
+    }else{
+      var event = new Indie.Models.Event({id:id})
     }
+    var perks_col = new Indie.Collections.Perks();
     var eventShow = new Indie.Views.EventShow({
-      event: this._events.get(id)
+      event: event,
+      perks: perks_col
     });
-    this._events.get(id).fetch({
+    event.fetch({
       success: function(response){
-        console.log(response)
+        console.log("fetched", response);
+        var perks_arr = event.get("perks")
+        if (perks_arr) {
+          for(var i = 0; i < perks_arr.length; i++){
+            perks_col.add(new Indie.Models.Perk(perks_arr[i]));
+          }
+        };        
       }
     });
     this._swapView(eventShow);
-    eventShow.render();
   },
   _generateNavBar: function(user){
     var barView = new Indie.Views.NavBar({

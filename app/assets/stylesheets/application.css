@@ -102,6 +102,14 @@ a {
   color: #369;
   opacity: 1;
 }
+.close.perk-destroyer{
+  color: #369;
+  opacity: 0.7;
+}
+.close.perk-destroyer:hover{
+  color: #369;
+  opacity: 1;
+}
 .glyphicon.glyphicon-plus.add-perk{
   font-size: 100px;
   color: #369;

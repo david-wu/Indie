@@ -25,22 +25,22 @@ class Api::PerksController < ApplicationController
   end
 
   def create
-    @event = Perk.new(perk_params)
+    @perk = Perk.new(perk_params)
     # check to see if perk's event is owned by user
     # @user = Perk.find_by(session_token: params['session_token'])
     # @event.owner_id = @user.id
-    if @event.save!
-      render json: @event
+    if @perk.save!
+      render json: @perk
     else
-      render json: {errors: @event.errors.full_messages}, status: 422
+      render json: {errors: @perk.errors.full_messages}, status: 422
     end
   end
 
   def destroy
-    # @event = Event.find(event_params)
+    @perk = Perk.find(params['id'])
     # @user = User.find_by(session_token: params['session_token'])
     # if(@event.id == @user.id)
-    #   render json: @event.destroy
+      render json: @perk.destroy
     # else
     #   render json: {errors: ['not your event!']}, status: 422
     # end

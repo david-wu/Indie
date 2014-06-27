@@ -89,7 +89,7 @@
       <div class="perks-col">
         <!-- add perks here -->
         <% perks.each(function(perk){ %>
-          <%= JST['perk/show']({perk: perk}) %>
+          <%= JST['perk/show']({perk: perk, is_owned: is_owned}) %>
         <% }) %>
 
       </div><br><br>

@@ -5,6 +5,18 @@ Indie.Views.EventShow = Backbone.View.extend({
     'click .btn-contribute': 'fundEvent',
     'click .glyphicon.glyphicon-plus.add-perk': 'newPerk',
     'click .btn.btn-success.create-perk': 'createPerk',
+    'click .close.perk-destroyer': 'destroyPerk',
+  },
+
+  destroyPerk: function(event){
+    var that = this;
+    $('.add-perk-container').html('<span class="glyphicon glyphicon-plus add-perk"></span>')
+    this.perks.get(event.toElement.dataset.id).destroy({
+      success: function(){
+        that.render();
+      }
+    })
+
   },
 
   createPerk: function(event){
@@ -14,7 +26,9 @@ Indie.Views.EventShow = Backbone.View.extend({
     perk.set('event_id', this.event.get('id'));
     perk.save([], {
       success: function(){
-        $('.perks-col').append(JST['perk/show']({perk: perk}));
+        that.perks.add(perk);
+
+        $('.perks-col').append(JST['perk/show']({perk: perk, is_owned: true}));
         // Indie.router.showEvent(that.event.get('id'));
       }
     });

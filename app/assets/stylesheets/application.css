@@ -59,9 +59,19 @@ a {
 .tile:hover {
   opacity: 1;
 }
+.perk {
+  border: 1px solid #d4d4d4;
+  opacity: 0.8;
+  padding: 4px;
+}
+.perk:hover {
+  opacity: 1;
+}
+
 .tile-container.col-sm-4 {
   height: 500px;
 }
+
 
 #footer{
   background-color: black;

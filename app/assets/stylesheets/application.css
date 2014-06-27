@@ -61,10 +61,13 @@ a {
 }
 .perk {
   border: 1px solid #d4d4d4;
+  padding: 4px;
+}
+.perk-img {
   opacity: 0.8;
   padding: 4px;
 }
-.perk:hover {
+.perk-img:hover {
   opacity: 1;
 }
 

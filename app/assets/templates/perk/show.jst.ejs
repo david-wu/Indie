@@ -1,7 +1,6 @@
 <% if(is_owned){ %>
 <button type="button" data-id='<%= perk.get('id') %>' class="close perk-destroyer" aria-hidden="true">×</button>
 <% } %>
-
 <div class="perk perk-<%=perk.get('id')%>">
 	<h3>$<%= perk.get('cost') %></h3>
 	<img class='perk-img' src='<%= perk.get('img_src') %>'>
